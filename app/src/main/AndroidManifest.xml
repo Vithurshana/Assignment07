@@ -21,6 +21,20 @@
                 android:name=".form.PublisherForm"
                 android:exported="false"/>
         <activity
+                android:name=".form.BranchForm"
+                android:exported="false">
+            <meta-data
+                    android:name="android.app.lib_name"
+                    android:value="" />
+        </activity>
+        <activity
+                android:name=".activity.BranchActivity"
+                android:exported="false">
+            <meta-data
+                    android:name="android.app.lib_name"
+                    android:value="" />
+        </activity>
+        <activity
                 android:name=".form.BookCopyForm"
                 android:exported="false"/>
         <activity

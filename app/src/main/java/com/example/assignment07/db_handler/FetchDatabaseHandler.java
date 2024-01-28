@@ -58,6 +58,45 @@ public class FetchDatabaseHandler extends SQLiteOpenHelper {
         return bookList.get(0);
     }
 
+    public ArrayList<Map<String,String>> getAllBranches() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Constant.BRANCH_TABLE_NAME, null);
+        ArrayList<Map<String,String>> branchesList = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                Map<String,String> branchDetails = new HashMap<>();
+                branchDetails.put(Constant.BRANCH_ID,cursor.getString(0));
+                branchDetails.put(Constant.BRANCH_NAME,cursor.getString(1));
+                branchDetails.put(Constant.BRANCH_ADDRESS,cursor.getString(2));
+
+                branchesList.add(branchDetails);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return branchesList;
+    }
+
+    public Map<String,String> getBranchById(String branchId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + Constant.BRANCH_TABLE_NAME + " WHERE " + Constant.BRANCH_ID + "='" + branchId + "';";
+        Cursor cursor = db.rawQuery(query, null);
+        ArrayList<Map<String,String>> branchesList = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                Map<String,String> branchDetails = new HashMap<>();
+                branchDetails.put(Constant.BRANCH_ID,cursor.getString(0));
+                branchDetails.put(Constant.BRANCH_NAME,cursor.getString(1));
+                branchDetails.put(Constant.BRANCH_ADDRESS,cursor.getString(2));
+
+                branchesList.add(branchDetails);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return branchesList.get(0);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

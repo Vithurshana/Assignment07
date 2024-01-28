@@ -17,6 +17,7 @@ import com.example.assignment07.MainActivity;
 import com.example.assignment07.R;
 import com.example.assignment07.db_handler.DatabaseHandler;
 import com.example.assignment07.db_handler.FetchDatabaseHandler;
+import com.example.assignment07.form.BookAuthorForm;
 import com.example.assignment07.form.MemberForm;
 import com.example.assignment07.utills.Constant;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,7 +39,7 @@ public class BookAuthorActivity extends AppCompatActivity {
 
         ArrayList<Map<String, String>> bookAuthors = fetchHandler.getAllBookAuthor();
 
-        Intent authorFormIntent = new Intent(this, MemberForm.class);
+        Intent authorFormIntent = new Intent(this, BookAuthorForm.class);
         Intent mainActivityIntent = new Intent(this, MainActivity. class);
         tableLayout(bookAuthors, authorFormIntent);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +75,7 @@ public class BookAuthorActivity extends AppCompatActivity {
                     Log.d("Clicked row values", author.get(Constant.BOOK_ID));
                     bookAuthorFormIntent.putExtra(Constant.FORM_ACTION, Constant.UPDATE_FORM_ACTION);
                     bookAuthorFormIntent.putExtra(Constant.BOOK_ID, author.get(Constant.BOOK_ID));
+                    bookAuthorFormIntent.putExtra(Constant.AUTHOR_NAME, author.get(Constant.AUTHOR_NAME));
                     startActivity(bookAuthorFormIntent);
                 }
             });

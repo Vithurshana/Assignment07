@@ -7,6 +7,7 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.assignment07.R;
 import com.example.assignment07.activity.BookActivity;
+import com.example.assignment07.activity.PublisherActivity;
 import com.example.assignment07.db_handler.DatabaseHandler;
 import com.example.assignment07.db_handler.FetchDatabaseHandler;
 import com.example.assignment07.utills.Constant;
@@ -34,26 +35,26 @@ public class PublisherForm extends AppCompatActivity {
         editPublisherName = findViewById(R.id.editPublisher);
         editAddress = findViewById(R.id.editAddress);
         editPhone = findViewById(R.id.editPhone);
-        Button btnBookFormAction = findViewById(R.id.btnFormAction);
-        Button btnDeleteBook = findViewById(R.id.btnDelete);
+        Button btnFormAction = findViewById(R.id.btnFormAction);
+        Button btnDelete = findViewById(R.id.btnDelete);
         ImageButton backBtn = findViewById(R.id.backBtn);
         FetchDatabaseHandler fetchDatabaseHandler = new FetchDatabaseHandler(this);
         databaseHandler = new DatabaseHandler(this);
-        publisherActivityIntent = new Intent(this, BookActivity.class);
-        Intent bookFormIntent = getIntent();
-        formAction = bookFormIntent.getStringExtra(Constant.FORM_ACTION);
+        publisherActivityIntent = new Intent(this, PublisherActivity.class);
+        Intent publisherFormIntent = getIntent();
+        formAction = publisherFormIntent.getStringExtra(Constant.FORM_ACTION);
         if (formAction.equals(Constant.UPDATE_FORM_ACTION)) {
-            btnDeleteBook.setVisibility(View.VISIBLE);
-            TextView toolBarText = findViewById(R.id.bookFormToolBarText);
+            btnDelete.setVisibility(View.VISIBLE);
+            TextView toolBarText = findViewById(R.id.formToolBarText);
             toolBarText.setText(R.string.update_publisher_form);
-            publisherName = bookFormIntent.getStringExtra(Constant.PUBLISHER_NAME);
+            publisherName = publisherFormIntent.getStringExtra(Constant.PUBLISHER_NAME);
             Map<String, String> publisherData = fetchDatabaseHandler.getPublishersByName(publisherName);
             editPublisherName.setText(publisherData.get(Constant.PUBLISHER_NAME));
             editAddress.setText(publisherData.get(Constant.ADDRESS));
             editPhone.setText(publisherData.get(Constant.PHONE));
-            btnBookFormAction.setText(R.string.update_publisher);
+            btnFormAction.setText(R.string.update_publisher);
         }
-        btnBookFormAction.setOnClickListener(listener);
+        btnFormAction.setOnClickListener(listener);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +62,7 @@ public class PublisherForm extends AppCompatActivity {
                 startActivity(publisherActivityIntent);
             }
         });
-        btnDeleteBook.setOnClickListener(new View.OnClickListener() {
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 databaseHandler.deletePublisher(publisherName);

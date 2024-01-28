@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.assignment07.R;
 import com.example.assignment07.activity.BookActivity;
+import com.example.assignment07.activity.MemberActivity;
 import com.example.assignment07.db_handler.DatabaseHandler;
 import com.example.assignment07.db_handler.FetchDatabaseHandler;
 import com.example.assignment07.utills.Constant;
@@ -24,7 +25,7 @@ public class MemberForm extends AppCompatActivity {
     private String cardNumber = null;
 
     private DatabaseHandler databaseHandler;
-    private Intent bookActivityIntent;
+    private Intent memberActivityIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class MemberForm extends AppCompatActivity {
         ImageButton backBtn =  findViewById(R.id.backBtn);
         FetchDatabaseHandler fetchDatabaseHandler = new FetchDatabaseHandler(MemberForm.this);
         databaseHandler = new DatabaseHandler(MemberForm.this);
-        bookActivityIntent = new Intent(MemberForm.this, BookActivity.class);
+        memberActivityIntent = new Intent(MemberForm.this, MemberActivity.class);
         Intent memberFormIntent = getIntent();
         formAction = memberFormIntent.getStringExtra(Constant.FORM_ACTION);
         if (formAction.equals(Constant.UPDATE_FORM_ACTION)) {
@@ -63,14 +64,14 @@ public class MemberForm extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(bookActivityIntent);
+                startActivity(memberActivityIntent);
             }
         });
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 databaseHandler.deleteMember(cardNumber);
-                startActivity(bookActivityIntent);
+                startActivity(memberActivityIntent);
             }
         });
     }
@@ -85,7 +86,7 @@ public class MemberForm extends AppCompatActivity {
                 } else {
                     databaseHandler.addNewMember(editCardNumber.getText().toString(), editMemberName.getText().toString(),
                             editMemberAddress.getText().toString(), editMemberPhone.getText().toString() , Double.valueOf(editUnpaidDues.getText().toString()));
-                    startActivity(bookActivityIntent);
+                    startActivity(memberActivityIntent);
                 }
 
             } else {
@@ -95,7 +96,7 @@ public class MemberForm extends AppCompatActivity {
                 } else {
                     databaseHandler.updateMember(cardNumber, editCardNumber.getText().toString(), editMemberName.getText().toString(),
                             editMemberAddress.getText().toString(), editMemberPhone.getText().toString() , Double.valueOf(editUnpaidDues.getText().toString()));
-                    startActivity(bookActivityIntent);
+                    startActivity(memberActivityIntent);
                 }
 
             }

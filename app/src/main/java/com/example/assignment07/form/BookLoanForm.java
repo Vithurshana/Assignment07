@@ -50,8 +50,8 @@ public class BookLoanForm extends AppCompatActivity {
         ImageButton btnBookDue = findViewById(R.id.btnLoanDateDue);
         ImageButton btnBookReturn = findViewById(R.id.btnLoanDateReturn);
 
-        Button btnBookFormAction = findViewById(R.id.btnBookLoanFormAction);
-        Button btnDeleteBook = findViewById(R.id.btnDeleteBookLoan);
+        Button btnFormAction = findViewById(R.id.btnBookLoanFormAction);
+        Button btnDelete = findViewById(R.id.btnDeleteBookLoan);
         ImageButton backBtn = findViewById(R.id.backBtn);
         FetchDatabaseHandler fetchDatabaseHandler = new FetchDatabaseHandler(this);
         databaseHandler = new DatabaseHandler(this);
@@ -59,14 +59,14 @@ public class BookLoanForm extends AppCompatActivity {
         Intent bookFormIntent = getIntent();
         formAction = bookFormIntent.getStringExtra(Constant.FORM_ACTION);
         if (formAction.equals(Constant.UPDATE_FORM_ACTION)) {
-            btnDeleteBook.setVisibility(View.VISIBLE);
+            btnDelete.setVisibility(View.VISIBLE);
             TextView toolBarText = findViewById(R.id.bookFormToolBarText);
             toolBarText.setText(R.string.update_book_form);
             accessNumber = bookFormIntent.getStringExtra(Constant.ACCESS_NUMBER);
             branchId = bookFormIntent.getStringExtra(Constant.BRANCH_ID);
             cardNumber = bookFormIntent.getStringExtra(Constant.CARD_NUMBER);
             try {
-                bookOutDate = new Date(sdf.parse(bookFormIntent.getStringExtra(Constant.CARD_NUMBER)).getTime());
+                bookOutDate = new Date(sdf.parse(bookFormIntent.getStringExtra(Constant.LOAN_DATE_OUT)).getTime());
 
             } catch (ParseException e) {
                 throw new RuntimeException(e);
@@ -80,10 +80,23 @@ public class BookLoanForm extends AppCompatActivity {
             txtBookDueDate.setText(bookLoan.get(Constant.LOAN_DATE_DUE));
             txtBookReturnDate.setText(bookLoan.get(Constant.LOAN_DATE_RETURN));
             txtBookOutDate.setText(bookLoan.get(Constant.LOAN_DATE_OUT));
-            btnBookFormAction.setText(R.string.update_book_loan);
+            btnFormAction.setText(R.string.update_book_loan);
         }
-//        btnBookFormAction.setOnClickListener(listener);
+        btnFormAction.setOnClickListener(listener);
 
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseHandler.deleteBookLoan(accessNumber, branchId, cardNumber, bookOutDate);
+            }
+        });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(bookLoanActivityIntent);
+            }
+        });
 
         btnBookOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,36 +153,39 @@ public class BookLoanForm extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
+            String accessNumber1 = editAccessNumber.getText().toString();
+            String branchId1 = editBranchId.getText().toString();
+            String cardNumber1 = editCardNumber.getText().toString();
+            Date dateOut1 = null;
+            Date dateDue1 = null;
+            Date dateReturn1 = null;
             try {
-                String accessNumber1 = editAccessNumber.getText().toString();
-                String branchId1 = editBranchId.getText().toString();
-                String cardNumber1 = editCardNumber.getText().toString();
-                Date dateOut1 = new Date(sdf.parse(txtBookOutDate.getText().toString()).getTime());
-                Date dateDue1 = new Date(sdf.parse(txtBookOutDate.getText().toString()).getTime());
-                Date dateReturn1 = new Date(sdf.parse(txtBookOutDate.getText().toString()).getTime());
+                dateOut1 = new Date(sdf.parse(txtBookOutDate.getText().toString()).getTime());
+                dateDue1 = new Date(sdf.parse(txtBookOutDate.getText().toString()).getTime());
+                dateReturn1 = new Date(sdf.parse(txtBookOutDate.getText().toString()).getTime());
 
-                if (formAction.equals(Constant.CREATE_FORM_ACTION)) {
-                    boolean isExists = databaseHandler.isAccessNoAndBranchIdAndCardNoAndDateOutExists(accessNumber1, branchId1, cardNumber1, dateOut1);
-                    if (isExists) {
-                        Toast.makeText(BookLoanForm.this, "The Book ID is already exists", Toast.LENGTH_LONG).show();
-                    } else {
-                        databaseHandler.addNewBookLoan(accessNumber1, branchId1, cardNumber1, dateOut1, dateDue1, dateReturn1);
-                        startActivity(bookLoanActivityIntent);
-
-                    }
-                } else {
-                    boolean isExists = databaseHandler.isAccessNoAndBranchIdAndCardNoAndDateOutExists(accessNumber1, branchId1, cardNumber1, dateOut1);
-                    if (!accessNumber1.equals(accessNumber) && !branchId1.equals(branchId) && !cardNumber1.equals(cardNumber)
-                            && !dateOut1.equals(bookOutDate) && isExists) {
-                        Toast.makeText(BookLoanForm.this, "The Book ID is already exists", Toast.LENGTH_LONG).show();
-                    } else {
-                        databaseHandler.updateBookLoan(accessNumber, branchId, cardNumber, bookOutDate, accessNumber1, branchId1, cardNumber1, dateOut1, dateDue1, dateReturn1);
-                        startActivity(bookLoanActivityIntent);
-                    }
-
-                }
             } catch (ParseException e) {
                 throw new RuntimeException(e);
+            }
+
+            boolean isExists = databaseHandler.isAccessNoAndBranchIdAndCardNoAndDateOutExists(accessNumber1, branchId1, cardNumber1, dateOut1);
+            if (formAction.equals(Constant.CREATE_FORM_ACTION)) {
+                if (isExists) {
+                    Toast.makeText(BookLoanForm.this, "The Book ID is already exists", Toast.LENGTH_LONG).show();
+                } else {
+                    databaseHandler.addNewBookLoan(accessNumber1, branchId1, cardNumber1, dateOut1, dateDue1, dateReturn1);
+                    startActivity(bookLoanActivityIntent);
+
+                }
+            } else {
+                if (!accessNumber1.equals(accessNumber) && !branchId1.equals(branchId) && !cardNumber1.equals(cardNumber)
+                        && !dateOut1.equals(bookOutDate) && isExists) {
+                    Toast.makeText(BookLoanForm.this, "The Book ID is already exists", Toast.LENGTH_LONG).show();
+                } else {
+                    databaseHandler.updateBookLoan(accessNumber, branchId, cardNumber, bookOutDate, accessNumber1, branchId1, cardNumber1, dateOut1, dateDue1, dateReturn1);
+                    startActivity(bookLoanActivityIntent);
+                }
+
             }
 
 

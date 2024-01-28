@@ -17,6 +17,7 @@ import com.example.assignment07.MainActivity;
 import com.example.assignment07.R;
 import com.example.assignment07.db_handler.DatabaseHandler;
 import com.example.assignment07.db_handler.FetchDatabaseHandler;
+import com.example.assignment07.form.BookCopyForm;
 import com.example.assignment07.form.MemberForm;
 import com.example.assignment07.utills.Constant;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,7 +41,7 @@ public class BookCopyActivity extends AppCompatActivity {
 
         ArrayList<Map<String, String>> booCopyList = fetchHandler.getAllBookCopy();
 
-        Intent bookCopyFormIntent = new Intent(this, MemberForm.class);
+        Intent bookCopyFormIntent = new Intent(this, BookCopyForm.class);
         Intent mainActivityIntent = new Intent(this, MainActivity. class);
         tableLayout(booCopyList, bookCopyFormIntent);
         fab.setOnClickListener(new View.OnClickListener() {

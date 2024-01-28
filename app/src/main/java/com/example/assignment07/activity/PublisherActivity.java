@@ -38,11 +38,11 @@ public class PublisherActivity extends AppCompatActivity {
         publisherFab = findViewById(R.id.publisherFab);
         ImageView backBtn = findViewById(R.id.backBtn);
 
-        ArrayList<Map<String, String>> bookList = fetchHandler.getAllPublishers();
+        ArrayList<Map<String, String>> publisherList = fetchHandler.getAllPublishers();
 
         Intent publisherFormIntent = new Intent(this, PublisherForm.class);
         Intent mainActivityIntent = new Intent(this, MainActivity. class);
-        tableLayout(bookList, publisherFormIntent);
+        tableLayout(publisherList, publisherFormIntent);
         publisherFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,29 +59,29 @@ public class PublisherActivity extends AppCompatActivity {
     }
 
     private void tableLayout(ArrayList<Map<String, String>> publisherList, Intent publisherFormIntent) {
-        TableLayout bookTableLayout = findViewById(R.id.bookTbContent);
+        TableLayout publisherTbContent = findViewById(R.id.publisherTbContent);
         for (int i = 0; i < publisherList.size(); i++) {
             Map<String, String> publisher = publisherList.get(i);
             TableRow row = new TableRow(this);
             row.setBackgroundColor(Color.GRAY);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
             row.setLayoutParams(lp);
-            TextView name = getSampleTextView(this, publisher.get(Constant.BOOK_ID), 4);
+            TextView name = getSampleTextView(this, publisher.get(Constant.PUBLISHER_NAME), 4);
             row.addView(name);
-            TextView address = getSampleTextView(this, publisher.get(Constant.BOOK_TITLE), 4);
+            TextView address = getSampleTextView(this, publisher.get(Constant.ADDRESS), 4);
             row.addView(address);
-            TextView phone = getSampleTextView(this, publisher.get(Constant.PUBLISHER_NAME), 4);
+            TextView phone = getSampleTextView(this, publisher.get(Constant.PHONE), 4);
             row.addView(phone);
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.d("Clicked row values", publisher.get(Constant.BOOK_ID));
+                    Log.d("Clicked row values", publisher.get(Constant.PUBLISHER_NAME));
                     publisherFormIntent.putExtra(Constant.FORM_ACTION, Constant.UPDATE_FORM_ACTION);
-                    publisherFormIntent.putExtra(Constant.BOOK_ID, publisher.get(Constant.BOOK_ID));
+                    publisherFormIntent.putExtra(Constant.PUBLISHER_NAME, publisher.get(Constant.PUBLISHER_NAME));
                     startActivity(publisherFormIntent);
                 }
             });
-            bookTableLayout.addView(row);
+            publisherTbContent.addView(row);
         }
 
     }

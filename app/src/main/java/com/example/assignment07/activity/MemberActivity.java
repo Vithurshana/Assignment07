@@ -59,23 +59,23 @@ public class MemberActivity extends AppCompatActivity {
     }
 
     private void tableLayout(ArrayList<Map<String, String>> members, Intent memberFormIntent) {
-        TableLayout bookTableLayout = findViewById(R.id.bookTbContent);
+        TableLayout memberTableLayout = findViewById(R.id.memberTbContent);
         for (int i = 0; i < members.size(); i++) {
             Map<String, String> member = members.get(i);
             TableRow row = new TableRow(this);
             row.setBackgroundColor(Color.GRAY);
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
             row.setLayoutParams(lp);
-            TextView accessNumber = getSampleTextView(this, member.get(Constant.CARD_NUMBER), 130);
-            row.addView(accessNumber);
-            TextView branchId = getSampleTextView(this, member.get(Constant.MEMBER_NAME),100);
-            row.addView(branchId);
-            TextView cardNumber = getSampleTextView(this, member.get(Constant.MEMBER_ADDRESS),100);
+            TextView cardNumber = getSampleTextView(this, member.get(Constant.CARD_NUMBER), 130);
             row.addView(cardNumber);
-            TextView outDate = getSampleTextView(this, member.get(Constant.MEMBER_PHONE),100);
-            row.addView(outDate);
-            TextView dueDate = getSampleTextView(this, member.get(Constant.UNPAID_DUES),100);
-            row.addView(dueDate);
+            TextView name = getSampleTextView(this, member.get(Constant.MEMBER_NAME),100);
+            row.addView(name);
+            TextView address = getSampleTextView(this, member.get(Constant.MEMBER_ADDRESS),100);
+            row.addView(address);
+            TextView phone = getSampleTextView(this, member.get(Constant.MEMBER_PHONE),100);
+            row.addView(phone);
+            TextView unpaid = getSampleTextView(this, member.get(Constant.UNPAID_DUES),100);
+            row.addView(unpaid);
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -85,7 +85,7 @@ public class MemberActivity extends AppCompatActivity {
                     startActivity(memberFormIntent);
                 }
             });
-            bookTableLayout.addView(row);
+            memberTableLayout.addView(row);
         }
 
     }

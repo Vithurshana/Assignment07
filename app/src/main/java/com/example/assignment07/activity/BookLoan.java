@@ -59,7 +59,7 @@ public class BookLoan extends AppCompatActivity {
     }
 
     private void tableLayout(ArrayList<Map<String, String>> bookLoans, Intent bookLoanFormIntent) {
-        TableLayout bookTableLayout = findViewById(R.id.bookTbContent);
+        TableLayout bookTableLayout = findViewById(R.id.bookLoanTbContent);
         for (int i = 0; i < bookLoans.size(); i++) {
             Map<String, String> bookLoan = bookLoans.get(i);
             TableRow row = new TableRow(this);
@@ -83,7 +83,10 @@ public class BookLoan extends AppCompatActivity {
                 public void onClick(View view) {
                     Log.d("Clicked row values", bookLoan.get(Constant.BOOK_ID));
                     bookLoanFormIntent.putExtra(Constant.FORM_ACTION, Constant.UPDATE_FORM_ACTION);
-                    bookLoanFormIntent.putExtra(Constant.BOOK_ID, bookLoan.get(Constant.BOOK_ID));
+                    bookLoanFormIntent.putExtra(Constant.ACCESS_NUMBER, bookLoan.get(Constant.ACCESS_NUMBER));
+                    bookLoanFormIntent.putExtra(Constant.BRANCH_ID, bookLoan.get(Constant.BRANCH_ID));
+                    bookLoanFormIntent.putExtra(Constant.CARD_NUMBER, bookLoan.get(Constant.CARD_NUMBER));
+                    bookLoanFormIntent.putExtra(Constant.LOAN_DATE_OUT, bookLoan.get(Constant.LOAN_DATE_OUT));
                     startActivity(bookLoanFormIntent);
                 }
             });

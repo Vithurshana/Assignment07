@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         DatabaseHandler handler = new DatabaseHandler(this);
-        handler.createTables();
+//        handler.createTables();
         Button btnBook = findViewById(R.id.BtnBook);
         Button btnBookLoan = findViewById(R.id.BtnBookLoan);
         Button btnBranch = findViewById(R.id.BtnBranch);

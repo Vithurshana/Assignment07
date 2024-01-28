@@ -31,8 +31,8 @@ public class BookAuthorForm extends AppCompatActivity {
 
         edtBookId = findViewById(R.id.editBookId);
         editAuthorName = findViewById(R.id.editAuthorName);
-        Button btnBookFormAction = findViewById(R.id.btnBookFormAction);
-        Button btnDeleteBook = findViewById(R.id.btnDeleteBook);
+        Button btnBFormAction = findViewById(R.id.btnFormAction);
+        Button btnDelete = findViewById(R.id.btnDelete);
         ImageButton backBtn = findViewById(R.id.backBtn);
         FetchDatabaseHandler fetchDatabaseHandler = new FetchDatabaseHandler(BookAuthorForm.this);
         databaseHandler = new DatabaseHandler(BookAuthorForm.this);
@@ -40,16 +40,17 @@ public class BookAuthorForm extends AppCompatActivity {
         Intent bookFormIntent = getIntent();
         formAction = bookFormIntent.getStringExtra(Constant.FORM_ACTION);
         if (formAction.equals(Constant.UPDATE_FORM_ACTION)) {
-            btnDeleteBook.setVisibility(View.VISIBLE);
+            btnDelete.setVisibility(View.VISIBLE);
             TextView toolBarText = findViewById(R.id.bookFormToolBarText);
             toolBarText.setText(R.string.update_book_form);
             bookId = bookFormIntent.getStringExtra(Constant.BOOK_ID);
+            authorName = bookFormIntent.getStringExtra(Constant.AUTHOR_NAME);
             Map<String, String> authorData = fetchDatabaseHandler.getBookAuthorByBookIdAndName(bookId, authorName);
             edtBookId.setText(authorData.get(Constant.BOOK_ID));
             editAuthorName.setText(authorData.get(Constant.AUTHOR_NAME));
-            btnBookFormAction.setText(R.string.update_book);
+            btnBFormAction.setText(R.string.update_book);
         }
-        btnBookFormAction.setOnClickListener(listener);
+        btnBFormAction.setOnClickListener(listener);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +58,7 @@ public class BookAuthorForm extends AppCompatActivity {
                 startActivity(bookAuthorActivityIntent);
             }
         });
-        btnDeleteBook.setOnClickListener(new View.OnClickListener() {
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 databaseHandler.deleteBookAuthor(bookId, authorName);

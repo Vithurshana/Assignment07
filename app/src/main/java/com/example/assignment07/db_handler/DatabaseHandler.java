@@ -211,7 +211,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public boolean isPublisherExists(String publisherName) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT COUNT(p." + Constant.PUBLISHER_NAME + ") FROM " + Constant.PUBLISHER_NAME
+        String query = "SELECT COUNT(p." + Constant.PUBLISHER_NAME + ") FROM " + Constant.PUBLISHER_TABLE_NAME
                 + " p WHERE p." + Constant.PUBLISHER_NAME + " = '" + publisherName + "'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {

@@ -35,7 +35,7 @@ public class BookCopyForm extends AppCompatActivity {
         edtBookId = findViewById(R.id.editBookId);
         edtBranchId = findViewById(R.id.editBranchId);
         editAccessNumber = findViewById(R.id.editAccessNumber);
-        Button btnBookFormAction = findViewById(R.id.btnBookFormAction);
+        Button btnFormAction = findViewById(R.id.btnFormAction);
         Button btnDelete = findViewById(R.id.btnDelete);
         ImageButton backBtn =  findViewById(R.id.backBtn);
         FetchDatabaseHandler fetchDatabaseHandler = new FetchDatabaseHandler(BookCopyForm.this);
@@ -48,13 +48,14 @@ public class BookCopyForm extends AppCompatActivity {
             TextView toolBarText = findViewById(R.id.bookFormToolBarText);
             toolBarText.setText(R.string.update_book_copy_form);
             accessNumber = bookFormIntent.getStringExtra(Constant.ACCESS_NUMBER);
+            branchId = bookFormIntent.getStringExtra(Constant.BRANCH_ID);
             Map<String, String> bookCopyData = fetchDatabaseHandler.getBookCopyByAccessNumberAndBranchId(accessNumber, branchId);
             edtBookId.setText(bookCopyData.get(Constant.BOOK_ID));
             edtBranchId.setText(bookCopyData.get(Constant.BRANCH_ID));
             editAccessNumber.setText(bookCopyData.get(Constant.ACCESS_NUMBER));
-            btnBookFormAction.setText(R.string.update_book_copy);
+            btnFormAction.setText(R.string.update_book_copy);
         }
-        btnBookFormAction.setOnClickListener(listener);
+        btnFormAction.setOnClickListener(listener);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

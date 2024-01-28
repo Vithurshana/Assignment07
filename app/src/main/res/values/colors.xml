@@ -7,6 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#0000FF</color>
+    <color name="bg">#d1d5e6</color>
     <color name="list_background">#9bb8d1</color>
     <color name="column_title_background">#031626</color>
     <color name="ash">#B2BEB5</color>B2BEB5

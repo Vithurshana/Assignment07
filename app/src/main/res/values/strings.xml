@@ -9,4 +9,30 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="book_id">Book Id</string>
+    <string name="book_title">Book Title</string>
+    <string name="publisher_name">Publisher</string>
+
+    <string name="books">Books</string>
+    <string name="add_book_form">Add Book Form</string>
+    <string name="update_book_form">Update Book Form</string>
+    <string name="update_book">Update Book</string>
+    <string name="add_book">Add Book</string>
+    <string name="delete_book">Delete Book</string>
+
+    <string name="book_loans">Books Loans</string>
+    <string name="add_book_loan_form">Add Book Loan Form</string>
+    <string name="update_book_loan_form">Update Book Loan Form</string>
+    <string name="update_book_loan">Update Book Loan</string>
+    <string name="add_book_loan">Add Book Loan</string>
+    <string name="delete_book_loan">Delete Book Loan</string>
+
+
+
+    <string name="access_number">Access Number</string>
+    <string name="branch_id">Branch Id</string>
+    <string name="card_number">Card Number</string>
+    <string name="book_loan_out_data">Out Date</string>
+    <string name="book_loan_due_data">Due Date</string>
+    <string name="book_loan_return_data">Return Date</string>
 </resources>

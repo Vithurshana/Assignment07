@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".insert_data.AddBookLoan"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Book Loan"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/idEditLoanAccessNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Access No" />
+
+
+    <EditText
+        android:id="@+id/idEditLoanBranchId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Branch Id" />
+
+
+    <EditText
+        android:id="@+id/idEditLoanCardNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter card no" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/idTxtLoanDateOut"
+            android:layout_width="wrap_content"
+            android:minWidth="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_baseline_calendar"
+            android:layout_marginRight="20dp"
+            android:id="@+id/btnLoanDateOut"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/idTxtLoanDateDue"
+            android:layout_width="wrap_content"
+            android:minWidth="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_baseline_calendar"
+            android:layout_marginRight="20dp"
+            android:id="@+id/btnLoanDateDue"
+            android:background="#B2BEB5"/>
+        />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/idTxtLoanDateReturn"
+            android:layout_width="wrap_content"
+            android:minWidth="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_baseline_calendar"
+            android:layout_marginRight="20dp"
+            android:id="@+id/btnLoanDateReturn"
+            android:background="#B2BEB5"/>
+        />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/idBtnAddBookLoan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Add Book Loan"
+        android:textAllCaps="false"
+        android:background="#B2BEB5"/>
+    />
+
+</LinearLayout>

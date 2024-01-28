@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bookLoanRowView">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBooKLoanAccessNo"
+        android:textColor="@color/black"
+        android:layout_weight="1"
+        android:textSize="19sp"
+        android:minWidth="200dp"
+        android:padding="5dp"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBooKLoanBranchId"
+        android:textColor="@color/black"
+        android:layout_weight="1"
+        android:textSize="19sp"
+        android:padding="5dp"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBooKLoanCardNo"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBooKLoanDateOut"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBooKLoanDateDue"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:padding="5dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtBooKLoanDateReturn"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:padding="5dp"
+        android:minWidth="200dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

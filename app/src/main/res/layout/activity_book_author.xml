@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BookAuthor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/listViewColumnName"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@color/column_title_background"
+            android:layout_weight="1"
+            android:text="Book Id"
+            android:textAlignment="center"
+            android:textSize="19sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:text="Author Name"
+            android:textStyle="bold"
+            android:background="@color/column_title_background"
+            android:textAlignment="center"
+            android:textSize="19sp"/>
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listViewColumnName"
+        android:dividerHeight="5sp"
+        android:id="@+id/bookAuthorListView"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bookAuthorAddButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/ic_baseline_add_24">
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+</RelativeLayout>

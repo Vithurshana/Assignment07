@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".update_delete.UpdateDeleteMemberActivity"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/idEditCard_No"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Card No" />
+
+
+    <EditText
+        android:id="@+id/idMemberName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Member Name" />
+
+
+    <EditText
+        android:id="@+id/idEdtMemberAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Member Address" />
+
+    <EditText
+        android:id="@+id/idEdtMemberPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Member Phone Number" />
+
+    <EditText
+        android:id="@+id/idEdtUnpaid_dues"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Unpaid Dues" />
+
+    <Button
+        android:id="@+id/btnUpdateMember"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Update Member"
+        android:textAllCaps="false"
+        android:background="#B2BEB5"/>
+    />
+    <Button
+        android:id="@+id/btnDeleteMember"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Delete Member"
+        android:textAllCaps="false"
+        android:background="#B2BEB5"/>
+    />
+
+</LinearLayout>

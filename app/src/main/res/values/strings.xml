@@ -27,8 +27,6 @@
     <string name="update_book_loan">Update Book Loan</string>
     <string name="add_book_loan">Add Book Loan</string>
     <string name="delete_book_loan">Delete Book Loan</string>
-
-    <string name="access_number">Access Number</string>
     <string name="branch_id">Branch Id</string>
     <string name="card_number">Card Number</string>
     <string name="book_loan_out_data">Out Date</string>
@@ -70,4 +68,15 @@
     <string name="update_branch">Update Branch</string>
     <string name="add_branch">Add Branch</string>
     <string name="delete_branch">Delete Branch</string>
+
+    <string name="member_name">Name</string>
+    <string name="member_address">Address</string>
+    <string name="member_phone">Phone</string>
+    <string name="unpaid_dues">Unpaid Dues</string>
+    <string name="member">Member</string>
+    <string name="add_member_form">Add Member Form</string>
+    <string name="update_member_form">Update Member Form</string>
+    <string name="update_member">Update Member</string>
+    <string name="add_member">Add Member</string>
+    <string name="delete_member">Delete Member</string>
 </resources>

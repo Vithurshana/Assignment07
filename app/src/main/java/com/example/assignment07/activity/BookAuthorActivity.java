@@ -1,28 +1,59 @@
 package com.example.assignment07.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.assignment07.MainActivity;
 import com.example.assignment07.R;
+import com.example.assignment07.db_handler.DatabaseHandler;
+import com.example.assignment07.db_handler.FetchDatabaseHandler;
+import com.example.assignment07.form.MemberForm;
 import com.example.assignment07.utills.Constant;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Map;
 
 public class BookAuthorActivity extends AppCompatActivity {
-
+    private FloatingActionButton fab;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_author);
+        DatabaseHandler handler = new DatabaseHandler(this);
+        FetchDatabaseHandler fetchHandler = new FetchDatabaseHandler(this);
+        fab = findViewById(R.id.bookAuthorFab);
+        ImageView backBtn = findViewById(R.id.backBtn);
+
+        ArrayList<Map<String, String>> bookAuthors = fetchHandler.getAllBookAuthor();
+
+        Intent authorFormIntent = new Intent(this, MemberForm.class);
+        Intent mainActivityIntent = new Intent(this, MainActivity. class);
+        tableLayout(bookAuthors, authorFormIntent);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                authorFormIntent.putExtra(Constant.FORM_ACTION, Constant.CREATE_FORM_ACTION);
+                startActivity(authorFormIntent);
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(mainActivityIntent);
+            }
+        });
     }
 
     private void tableLayout(ArrayList<Map<String, String>> authorList, Intent bookAuthorFormIntent) {

@@ -14,7 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.assignment07.MainActivity;
 import com.example.assignment07.R;
+import com.example.assignment07.db_handler.DatabaseHandler;
+import com.example.assignment07.db_handler.FetchDatabaseHandler;
 import com.example.assignment07.form.BookLoanForm;
+import com.example.assignment07.form.MemberForm;
 import com.example.assignment07.utills.Constant;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,16 +33,26 @@ public class BookLoan extends AppCompatActivity {
         setContentView(R.layout.activity_book_loan);
 
         fab = findViewById(R.id.bookLoanFab);
-        ImageView backBtn =  findViewById(R.id.backBtn);
+        DatabaseHandler handler = new DatabaseHandler(this);
+        FetchDatabaseHandler fetchHandler = new FetchDatabaseHandler(this);
+        ImageView backBtn = findViewById(R.id.backBtn);
+
+        ArrayList<Map<String, String>> bookLoans = fetchHandler.getAllBookLoans();
 
         Intent bookLoanFormIntent = new Intent(this, BookLoanForm.class);
-        Intent mainActivityIntent = new Intent(this, MainActivity.class);
-
+        Intent mainActivityIntent = new Intent(this, MainActivity. class);
+        tableLayout(bookLoans, bookLoanFormIntent);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bookLoanFormIntent.putExtra(Constant.FORM_ACTION, Constant.CREATE_FORM_ACTION);
                 startActivity(bookLoanFormIntent);
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(mainActivityIntent);
             }
         });
 

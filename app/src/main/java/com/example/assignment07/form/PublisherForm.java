@@ -88,7 +88,7 @@ public class PublisherForm extends AppCompatActivity {
                 if (!publisherName.equals(editPublisherName.getText().toString()) && isExists) {
                     Toast.makeText(PublisherForm.this, "The Publisher is already exists", Toast.LENGTH_LONG).show();
                 } else {
-                    databaseHandler.updateBook(publisherName, editPublisherName.getText().toString(), editAddress.getText().toString(),
+                    databaseHandler.updatePublisher(publisherName, editPublisherName.getText().toString(), editAddress.getText().toString(),
                             editPhone.getText().toString());
                     startActivity(publisherActivityIntent);
                 }

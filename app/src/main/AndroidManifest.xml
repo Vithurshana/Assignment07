@@ -15,6 +15,12 @@
             android:theme="@style/Theme.Assignment07"
             tools:targetApi="31">
         <activity
+                android:name=".form.MemberForm"
+                android:exported="false"/>
+        <activity
+                android:name=".activity.MemberActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".form.BookAuthorForm"
                 android:exported="false"/>
         <activity
@@ -25,14 +31,14 @@
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
-                    android:value="" />
+                    android:value=""/>
         </activity>
         <activity
                 android:name=".activity.BranchActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
-                    android:value="" />
+                    android:value=""/>
         </activity>
         <activity
                 android:name=".form.BookCopyForm"

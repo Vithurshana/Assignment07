@@ -200,6 +200,7 @@ public class FetchDatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return bookLoansList;
     }
+
     public Map<String, String> getBookLoansByAccessNumberAndBranchIdAndCardNumberAndDateOut(String accessNumber, String branchId, String cardNumber, Date dateOut) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + Constant.BOOK_COPY_TABLE_NAME + " WHERE " + Constant.ACCESS_NUMBER + "='" + accessNumber +
@@ -225,16 +226,16 @@ public class FetchDatabaseHandler extends SQLiteOpenHelper {
         return bookLoansList.get(0);
     }
 
-    public ArrayList<Map<String,String>> getAllBranches() {
+    public ArrayList<Map<String, String>> getAllBranches() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + Constant.BRANCH_TABLE_NAME, null);
-        ArrayList<Map<String,String>> branchesList = new ArrayList<>();
+        ArrayList<Map<String, String>> branchesList = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
-                Map<String,String> branchDetails = new HashMap<>();
-                branchDetails.put(Constant.BRANCH_ID,cursor.getString(0));
-                branchDetails.put(Constant.BRANCH_NAME,cursor.getString(1));
-                branchDetails.put(Constant.BRANCH_ADDRESS,cursor.getString(2));
+                Map<String, String> branchDetails = new HashMap<>();
+                branchDetails.put(Constant.BRANCH_ID, cursor.getString(0));
+                branchDetails.put(Constant.BRANCH_NAME, cursor.getString(1));
+                branchDetails.put(Constant.BRANCH_ADDRESS, cursor.getString(2));
 
                 branchesList.add(branchDetails);
             } while (cursor.moveToNext());
@@ -244,17 +245,17 @@ public class FetchDatabaseHandler extends SQLiteOpenHelper {
         return branchesList;
     }
 
-    public Map<String,String> getBranchById(String branchId) {
+    public Map<String, String> getBranchById(String branchId) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + Constant.BRANCH_TABLE_NAME + " WHERE " + Constant.BRANCH_ID + "='" + branchId + "';";
         Cursor cursor = db.rawQuery(query, null);
-        ArrayList<Map<String,String>> branchesList = new ArrayList<>();
+        ArrayList<Map<String, String>> branchesList = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
-                Map<String,String> branchDetails = new HashMap<>();
-                branchDetails.put(Constant.BRANCH_ID,cursor.getString(0));
-                branchDetails.put(Constant.BRANCH_NAME,cursor.getString(1));
-                branchDetails.put(Constant.BRANCH_ADDRESS,cursor.getString(2));
+                Map<String, String> branchDetails = new HashMap<>();
+                branchDetails.put(Constant.BRANCH_ID, cursor.getString(0));
+                branchDetails.put(Constant.BRANCH_NAME, cursor.getString(1));
+                branchDetails.put(Constant.BRANCH_ADDRESS, cursor.getString(2));
 
                 branchesList.add(branchDetails);
             } while (cursor.moveToNext());
@@ -262,6 +263,50 @@ public class FetchDatabaseHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return branchesList.get(0);
+    }
+
+    public ArrayList<Map<String, String>> getAllMembers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Constant.MEMBER_TABLE_NAME, null);
+        ArrayList<Map<String, String>> membersList = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                Map<String, String> memberMap = new HashMap<>();
+                memberMap.put(Constant.CARD_NUMBER, cursor.getString(0));
+                memberMap.put(Constant.MEMBER_NAME, cursor.getString(1));
+                memberMap.put(Constant.MEMBER_ADDRESS, cursor.getString(2));
+                memberMap.put(Constant.MEMBER_PHONE, cursor.getString(3));
+                memberMap.put(Constant.UNPAID_DUES, cursor.getString(4));
+
+                membersList.add(memberMap);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return membersList;
+    }
+
+
+    public Map<String, String> getMemberByCardNumber(String cardNumber) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + Constant.MEMBER_TABLE_NAME + " WHERE " + Constant.CARD_NUMBER + "='" + cardNumber + "';";
+        Cursor cursor = db.rawQuery(query, null);
+        ArrayList<Map<String, String>> membersList = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                Map<String, String> memberMap = new HashMap<>();
+                memberMap.put(Constant.CARD_NUMBER, cursor.getString(0));
+                memberMap.put(Constant.MEMBER_NAME, cursor.getString(1));
+                memberMap.put(Constant.MEMBER_ADDRESS, cursor.getString(2));
+                memberMap.put(Constant.MEMBER_PHONE, cursor.getString(3));
+                memberMap.put(Constant.UNPAID_DUES, cursor.getString(4));
+
+                membersList.add(memberMap);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return membersList.get(0);
     }
 
     @Override

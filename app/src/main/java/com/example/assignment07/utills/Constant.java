@@ -3,7 +3,7 @@ package com.example.assignment07.utills;
 public class Constant {
     public static final String COMA = ",";
     public static final String DB_NAME = "library_db.db";
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 3;
     public static final String FORM_ACTION = "action";
     public static final String CREATE_FORM_ACTION = "create";
     public static final String UPDATE_FORM_ACTION = "update";
@@ -39,4 +39,10 @@ public class Constant {
     public static final String BRANCH_TABLE_NAME = "branch";
     public static final String BRANCH_NAME = "branch_name";
     public static final String BRANCH_ADDRESS = "branch_address";
+
+    public static final String MEMBER_TABLE_NAME = "member";
+    public static final String MEMBER_NAME = "member_name";
+    public static final String MEMBER_ADDRESS = "member_address";
+    public static final String MEMBER_PHONE = "member_phone";
+    public static final String UNPAID_DUES = "unpaid_dues";
 }

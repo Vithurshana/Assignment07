@@ -40,7 +40,7 @@
 
 
     <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                 android:id="@+id/bookTbContent"
+                 android:id="@+id/bookCopyTbContent"
                  android:background="@color/white"
                  app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
         <TableRow android:background="@color/black">
@@ -74,7 +74,7 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/bookFab"
+            android:id="@+id/bookCopyFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"

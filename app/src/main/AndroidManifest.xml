@@ -15,6 +15,24 @@
             android:theme="@style/Theme.Assignment07"
             tools:targetApi="31">
         <activity
+                android:name=".form.BookAuthorForm"
+                android:exported="false"/>
+        <activity
+                android:name=".form.PublisherForm"
+                android:exported="false"/>
+        <activity
+                android:name=".form.BookCopyForm"
+                android:exported="false"/>
+        <activity
+                android:name=".activity.BookCopyActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".activity.PublisherActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".activity.BookAuthorActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".activity.BookLoan"
                 android:exported="false">
             <meta-data

@@ -28,11 +28,35 @@
     <string name="delete_book_loan">Delete Book Loan</string>
 
 
-
-    <string name="access_number">Access Number</string>
     <string name="branch_id">Branch Id</string>
     <string name="card_number">Card Number</string>
     <string name="book_loan_out_data">Out Date</string>
     <string name="book_loan_due_data">Due Date</string>
     <string name="book_loan_return_data">Return Date</string>
+
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="publishers">Publishers</string>
+    <string name="add_publisher_form">Add Publisher Form</string>
+    <string name="update_publisher_form">Update Publisher Form</string>
+    <string name="update_publisher">Update Publisher</string>
+    <string name="add_publisher">Add Publisher</string>
+    <string name="delete_publisher">Delete Publisher</string>
+
+    <string name="author_name">Name</string>
+    <string name="book_authors">Book Authors</string>
+    <string name="add_book_author_form">Add Book Author Form</string>
+    <string name="update_book_author_form">Update Book Author Form</string>
+    <string name="update_book_author">Update Book Author</string>
+    <string name="add_book_author">Add Book Author</string>
+    <string name="delete_book_author">Delete Book Author</string>
+
+
+    <string name="access_number">Access Number</string>
+    <string name="book_copy">Book Copy</string>
+    <string name="add_book_copy_form">Add Book Copy Form</string>
+    <string name="update_book_copy_form">Update Book Copy Form</string>
+    <string name="update_book_copy">Update Book Copy</string>
+    <string name="add_book_copy">Add Book Copy</string>
+    <string name="delete_book_copy">Delete Book Copy</string>
 </resources>
